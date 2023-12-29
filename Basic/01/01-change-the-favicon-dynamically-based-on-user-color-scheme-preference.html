@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="./favicon.png">
+  <!-- <link href="light-mode-favicon.png" rel="icon" media="(prefers-color-scheme: light)">
+  <link href="dark-mode-favicon.png" rel="icon" media="(prefers-color-scheme: dark)"> -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>根据用户的配色方案偏好动态更改图标</title>
+</head>
+<body>
+  <main>
+    <p>在我们可以根据用户的配色方案偏好动态更改图标之前，我们需要首先向我们的网站添加一个图标。`link`通过在 HTML 代码的 head 部分添加 HTML 元素即可轻松完成此操作。</p>
+    <p>rel 属性用于指示我们添加的图标是一个 favicon。</p>
+  </main>
+  </main>
+  <script>
+    // Dynamically changing favicon with JavaScript>
+   if(window.matchMedia('(prefers-color-scheme:dark)').matches) {
+    // dark
+   } else {
+      // light
+   }
+   const setFavicon = () => {
+    const favicon = document.querySelector('link[rel="icon"]');
+    favicon.href = (window.matchMedia('(prefers-color-scheme:dark)').matches ? './favicon_light.png' : './favicon_dark.png')
+   }
+   setFavicon();
+   window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', setFavicon);
+
+  </script>
+</body>
+</html>
